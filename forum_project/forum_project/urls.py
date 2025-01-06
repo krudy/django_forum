@@ -23,6 +23,7 @@ from forum import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+     path('', include('forum.urls')),
     path('thread/<int:thread_id>/', views.thread_detail, name='thread_detail'),
     path('thread/new/', views.create_thread, name='create_thread'),
     path('thread/<int:thread_id>/reply/', views.add_reply, name='add_reply'),
