@@ -55,7 +55,7 @@ def add_reply(request, thread_id):
 def category_threads(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     threads = Thread.objects.filter(category=category)
-    return render(request, 'category_threads.html', {
+    return render(request, 'forum/category_threads.html', {
         'category': category,
         'threads': threads,
     })
