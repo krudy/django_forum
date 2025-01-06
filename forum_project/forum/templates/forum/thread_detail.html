@@ -1,5 +1,9 @@
 <h1>{{ thread.title }}</h1>
 <p>{{ thread.content }}</p>
+
+<h2>Odpowiedzi</h2>
 {% for reply in thread.replies.all %}
 <p>{{ reply.author }}: {{ reply.content }}</p>
 {% endfor %}
+
+<a href="{% url 'add_reply' thread.id %}">Dodaj odpowiedź</a>
