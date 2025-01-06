@@ -51,3 +51,11 @@ def add_reply(request, thread_id):
     else:
         form = ReplyForm()
     return render(request, 'forum/add_reply.html', {'form': form, 'thread': thread})
+
+def category_threads(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    threads = Thread.objects.filter(category=category)
+    return render(request, 'forum/category_threads.html', {
+        'category': category,
+        'threads': threads,
+    })

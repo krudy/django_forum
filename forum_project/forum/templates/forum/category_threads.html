@@ -1,0 +1,14 @@
+<h1>Wątki w kategorii: {{ category.name }}</h1>
+<a href="{% url 'home' %}">Powrót do strony głównej</a>
+<a href="{% url 'create_thread' %}">Dodaj wątek</a>
+
+<ul>
+    {% for thread in threads %}
+        <li>
+            <a href="{% url 'thread_detail' thread.id %}">{{ thread.title }}</a>
+            <p>Dodane przez: {{ thread.author.username }} | {{ thread.created_at }}</p>
+        </li>
+    {% empty %}
+        <p>Brak wątków w tej kategorii.</p>
+    {% endfor %}
+</ul>
