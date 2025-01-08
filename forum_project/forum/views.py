@@ -12,7 +12,8 @@ def home(request):
 
 def thread_detail(request, thread_id):
     thread = get_object_or_404(Thread, id=thread_id)
-    return render(request, 'forum/thread_detail.html', {'thread': thread})
+    replies = Reply.objects.filter(thread=thread).order_by('created_at')  
+    return render(request, 'forum/thread_detail.html', {'thread': thread, 'replies': replies})
 
 def signup(request):
     if request.method == 'POST':

@@ -1,6 +1,19 @@
-<h1>Dodaj wątek</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Dodaj</button>
-</form>
+{% extends 'forum/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Dodaj wątek</h1>
+        
+        <!-- Formularz dodawania wątku -->
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary">Dodaj</button>
+        </form>
+
+        <!-- Link do strony głównej -->
+        <a href="{% url 'home' %}" class="btn btn-secondary mt-3">Powrót do strony głównej</a>
+    </div>
+{% endblock %}

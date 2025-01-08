@@ -1,6 +1,19 @@
-<h1>Dodaj odpowiedź do: {{ thread.title }}</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Dodaj</button>
-</form>
+{% extends 'forum/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Dodaj odpowiedź do: {{ thread.title }}</h1>
+        
+        <!-- Formularz dodawania odpowiedzi -->
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary">Dodaj</button>
+        </form>
+
+        <!-- Link do strony wątku -->
+        <a href="{% url 'thread_detail' thread.id %}" class="btn btn-secondary mt-3">Powrót do wątku</a>
+    </div>
+{% endblock %}

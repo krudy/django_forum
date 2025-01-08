@@ -1,9 +1,28 @@
-<h1>{{ thread.title }}</h1>
-<p>{{ thread.content }}</p>
+{% extends 'forum/base.html' %}
 
-<h2>Odpowiedzi</h2>
-{% for reply in thread.replies.all %}
-<p>{{ reply.author }}: {{ reply.content }}</p>
-{% endfor %}
+{% block content %}
+    <h1>{{ thread.title }}</h1>
+    <p>Author: {{ thread.author.username }}</p>
+    <p>{{ thread.created_at }}</p>
+    <p>{{ thread.content }}</p>
 
-<a href="{% url 'add_reply' thread.id %}">Dodaj odpowiedź</a>
+    <!-- Wyświetlanie odpowiedzi -->
+    <h3>Odpowiedzi:</h3>
+    {% if replies %}
+        <ul>
+            {% for reply in replies %}
+                <li>
+                    <p><strong>{{ reply.author.username }}</strong> - {{ reply.created_at }}</p>
+                    <p>{{ reply.content }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Brak odpowiedzi w tym wątku.</p>
+    {% endif %}
+
+    <!-- Formularz dodawania odpowiedzi -->
+    <a href="{% url 'add_reply' thread.id %}">Dodaj odpowiedź</a>
+    <br>
+    <a href="{% url 'home' %}">Powrót do strony głównej</a>
+{% endblock %}
