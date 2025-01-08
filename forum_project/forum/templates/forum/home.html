@@ -1,10 +1,12 @@
+{% extends 'forum/base.html' %}
+
+{% block content %}
 <h1>Forum</h1>
 <a href="{% url 'create_thread' %}">Dodaj wątek</a>
 
 {% for category in categories %}
-    <h2>
-        <a href="{% url 'category_threads' category.id %}">
-            {{ category.name }}
-        </a>
-    </h2>
+<h2>
+    <a href="{% url 'category_threads' category.id %}">{{ category.name }}</a>
+</h2>
 {% endfor %}
+{% endblock %}
