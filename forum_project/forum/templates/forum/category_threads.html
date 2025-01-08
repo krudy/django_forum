@@ -1,14 +1,25 @@
-<h1>Wątki w kategorii: {{ category.name }}</h1>
-<a href="{% url 'home' %}">Powrót do strony głównej</a>
-<a href="{% url 'create_thread' %}">Dodaj wątek</a>
+{% extends 'forum/base.html' %}
 
-<ul>
-    {% for thread in threads %}
-        <li>
-            <a href="{% url 'thread_detail' thread.id %}">{{ thread.title }}</a>
-            <p>Dodane przez: {{ thread.author.username }} | {{ thread.created_at }}</p>
-        </li>
-    {% empty %}
-        <p>Brak wątków w tej kategorii.</p>
-    {% endfor %}
-</ul>
+{% block content %}
+    <div class="container">
+        <h1>Wątki w kategorii: {{ category.name }}</h1>
+        
+        <!-- Linki -->
+        <div class="mb-3">
+            <a href="{% url 'home' %}" class="btn btn-secondary">Powrót do strony głównej</a>
+            <a href="{% url 'create_thread' %}" class="btn btn-primary">Dodaj wątek</a>
+        </div>
+
+        <!-- Lista wątków -->
+        <ul class="list-group">
+            {% for thread in threads %}
+                <li class="list-group-item">
+                    <a href="{% url 'thread_detail' thread.id %}" class="h5">{{ thread.title }}</a>
+                    <p class="text-muted">Dodane przez: {{ thread.author.username }} | {{ thread.created_at }}</p>
+                </li>
+            {% empty %}
+                <p>Brak wątków w tej kategorii.</p>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,63 @@
+/* Global Styles */
+body {
+    background-color: #f8f9fa; /* Light gray background */
+    color: #343a40; /* Dark gray text */
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #343a40; /* Dark gray */
+}
+.navbar-brand, .nav-link {
+    color: #f8f9fa !important; /* Light text */
+}
+.nav-link:hover {
+    color: #ffc107 !important; /* Highlighted on hover */
+}
+
+/* Button Styles */
+.btn-custom {
+    background-color: #007bff; /* Blue button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.btn-custom:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    color: white;
+}
+
+/* Content Section */
+.container {
+    background-color: white; /* White background for content */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Links inside content */
+a {
+    a {
+        display: inline-block;       /* Umożliwia stosowanie paddingu */
+        padding: 10px 20px;         /* Wewnętrzne marginesy dla "przycisku" */
+        background-color: #007BFF;  /* Kolor tła przycisku */
+        color: #fff;                /* Kolor tekstu */
+        text-decoration: none;      /* Usuwa podkreślenie */
+        border-radius: 5px;         /* Zaokrąglenie rogów */
+        font-size: 16px;            /* Rozmiar czcionki */
+        font-weight: bold;          /* Pogrubienie tekstu */
+        text-align: center;         /* Wyrównanie tekstu */
+        transition: background-color 0.3s ease; /* Efekt przejścia na hover */
+    }
+    
+    a:hover {
+        background-color: #0056b3;  /* Ciemniejszy kolor tła przy najechaniu */
+    }
+}
+a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
